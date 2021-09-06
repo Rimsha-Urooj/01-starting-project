@@ -15,12 +15,19 @@ const FormControl = styled.div`
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
+  color: ${(props)=>(props.invalid ? 'red' : 'black')};
 }
 
 & input {
   display: block;
   width: 100%;
-  border: 1px solid #ccc;
+  // for simple style components
+  // border: 1px solid #ccc;
+
+  // for props in styled components
+  border: 1px solid ${(props)=>(props.invalid ? 'red' : '#ccc') };
+  background: ${(props)=>(props.invalid ? '#ffd7d7' : 'transparent')};
+  
   font: inherit;
   line-height: 1.5rem;
   padding: 0 0.25rem;
@@ -34,14 +41,14 @@ const FormControl = styled.div`
 
 
 /* styling for dynamic css classes */
-&.invalid input{
-  border-color: red;
-  background: #ffd7d7;
-}
+// &.invalid input{
+//   border-color: red;
+//   background: #ffd7d7;
+// }
 
-&.invalid label{
-  color: red;
-}
+// &.invalid label{
+//   color: red;
+// }
 
 `;
 
@@ -72,7 +79,9 @@ const CourseInput = props => {
 
       {/* replacing div tag with FormControl styled component styled above */}
       {/* <div className={`form-control ${!isValid ? 'invalid' : ''} `}> </div> */}
-      <FormControl className={!isValid && 'invalid'}>
+      {/* <FormControl className={!isValid && 'invalid'}> */}
+      {/* 3rd way for using styled components */}
+      <FormControl invalid={!isValid}>
         {/* inline style */}
         {/* <label style={{ color: !isValid ? 'red' : 'black' }}>Course Goal</label> */}
         {/* <input style = {{ background: !isValid ? 'salmon': 'transparent', borderColor: !isValid ? 'red' : '#ccc'}} type="text" onChange={goalInputChangeHandler} /> */}
