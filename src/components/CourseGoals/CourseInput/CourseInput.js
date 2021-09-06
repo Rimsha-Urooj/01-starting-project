@@ -1,56 +1,57 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import Button from '../../UI/Button/Button';
-import './CourseInput.css';
+import styles from './CourseInput.module.css';
 
 
 // adding styled component
-const FormControl = styled.div`
+// const FormControl = styled.div`
 
-  margin: 0.5rem 0;
-
-
-& label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 0.5rem;
-  color: ${(props)=>(props.invalid ? 'red' : 'black')};
-}
-
-& input {
-  display: block;
-  width: 100%;
-  // for simple style components
-  // border: 1px solid #ccc;
-
-  // for props in styled components
-  border: 1px solid ${(props)=>(props.invalid ? 'red' : '#ccc') };
-  background: ${(props)=>(props.invalid ? '#ffd7d7' : 'transparent')};
-  
-  font: inherit;
-  line-height: 1.5rem;
-  padding: 0 0.25rem;
-}
-
-& input:focus {
-  outline: none;
-  background: #fad0ec;
-  border-color: #8b005d;
-}
+//   margin: 0.5rem 0;
 
 
-/* styling for dynamic css classes */
-// &.invalid input{
-//   border-color: red;
-//   background: #ffd7d7;
+// & label {
+//   font-weight: bold;
+//   display: block;
+//   margin-bottom: 0.5rem;
+//   color: ${(props)=>(props.invalid ? 'red' : 'black')};
 // }
 
-// &.invalid label{
-//   color: red;
+// & input {
+//   display: block;
+//   width: 100%;
+//   // for simple style components
+//   // border: 1px solid #ccc;
+
+//   // for props in styled components
+//   border: 1px solid ${(props)=>(props.invalid ? 'red' : '#ccc') };
+//   background: ${(props)=>(props.invalid ? '#ffd7d7' : 'transparent')};
+//   // background: ${props => (props.invalid ? '#ffd7d7' : 'transparent')};
+
+//   font: inherit;
+//   line-height: 1.5rem;
+//   padding: 0 0.25rem;
 // }
 
-`;
+// & input:focus {
+//   outline: none;
+//   background: #fad0ec;
+//   border-color: #8b005d;
+// }
+
+
+// /* styling for dynamic css classes */
+// // &.invalid input{
+// //   border-color: red;
+// //   background: #ffd7d7;
+// // }
+
+// // &.invalid label{
+// //   color: red;
+// // }
+
+// `;
 
 
 const CourseInput = props => {
@@ -81,7 +82,8 @@ const CourseInput = props => {
       {/* <div className={`form-control ${!isValid ? 'invalid' : ''} `}> </div> */}
       {/* <FormControl className={!isValid && 'invalid'}> */}
       {/* 3rd way for using styled components */}
-      <FormControl invalid={!isValid}>
+       {/* <FormControl invalid={!isValid}> */}
+       <div  className={`${styles['form-control']} ${!isValid && styles.invalid}`}>
         {/* inline style */}
         {/* <label style={{ color: !isValid ? 'red' : 'black' }}>Course Goal</label> */}
         {/* <input style = {{ background: !isValid ? 'salmon': 'transparent', borderColor: !isValid ? 'red' : '#ccc'}} type="text" onChange={goalInputChangeHandler} /> */}
@@ -89,7 +91,7 @@ const CourseInput = props => {
         {/* Adding css class dynamically */}
         <label >Course Goal</label>
         <input  type="text" onChange={goalInputChangeHandler} />
-      </FormControl>
+        </div>
       <Button type="submit">Add Goal</Button>
     </form>
   );
